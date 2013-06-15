@@ -2,6 +2,6 @@ Bash Setting
 
 this prj is bash setting for Linux / Mac 
 
-At Linux, .bashrc file
-At Mac OS X, .profile file
+In Linux, bashrc file link symbolic ~/.bashrc.
+In Mac, bash_profile file link symbolic ~/.bash_profile
 
