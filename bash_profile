@@ -53,7 +53,8 @@ git_prompt ()
  
 }
 
-export PATH="$PATH:$HOME/Bin:$HOME/.rvm/bin"
+export ARCHFLAGS="-arch x86_64"
+export PATH="$PATH:/usr/local/share/python:$HOME/Bin:$HOME/.rvm/bin"
 
 #the relevant part is $(git_prompt). the following ps will give you a prompt like:
 #[username]@hostname [current directory name] (current git branch) $
