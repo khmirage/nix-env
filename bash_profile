@@ -63,4 +63,16 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[0m\]$(git_prompt) : \[\033[1;34m\]\w\[\03
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+# python virtualenvwarpper setting
+export WORKON_HOME="$HOME/.virtualenv"
+export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python2.7"
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+export PIP_VIRTUALENV_BASE="$WORKON_HOME"
+export PIP_RESPECT_VIRTUALENV=true
+
+if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+	source /usr/local/bin/virtualenvwrapper.sh
+else
+	echo "WARNNING : virtualenvwarpper.sh missing"
+fi
 
