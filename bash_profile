@@ -13,6 +13,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 # git branch and status for color bash prompt
 if [ -x /usr/bin/tput ] && tput setaf 1 >& /dev/null; then
     c_git_clean=$(tput setaf 2)
