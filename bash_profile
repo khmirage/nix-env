@@ -58,7 +58,8 @@ git_prompt ()
 }
 
 export ARCHFLAGS="-arch x86_64"
-export PATH="$PATH:/usr/local/share/python:$HOME/Bin:$HOME/.rvm/bin"
+# export PATH="$PATH:/usr/local/share/python:$HOME/Bin:$HOME/.rvm/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/Bin:$HOME/.rvm/bin:$PATH"
 
 #the relevant part is $(git_prompt). the following ps will give you a prompt like:
 #[username]@hostname [current directory name] (current git branch) $
@@ -80,3 +81,4 @@ else
 	echo "WARNNING : virtualenvwarpper.sh missing"
 fi
 
+export NODE_PATH=/usr/local/lib/node_modules
