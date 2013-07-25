@@ -55,12 +55,7 @@ git_prompt ()
 
 export ARCHFLAGS="-arch x86_64"
 export PATH="/usr/local/bin:/usr/local/sbin:$HOME/Bin:$HOME/.rvm/bin:$PATH"
-
-#the relevant part is $(git_prompt). the following ps will give you a prompt like:
-#[username]@hostname [current directory name] (current git branch) $
-# export PS1="\[\033[01;32m\]\u@\h\[\033[00m\] \[$(branch_color)\]$(parse_git_branch)\[${c_sgr0}\] :\[\033[01;34m\]\w\[\033[00m\]\$ "
 export PS1='\[\033[01;32m\]\u@\h\[\033[0m\]$(git_prompt) : \[\033[1;34m\]\w\[\033[0m\] \$ '
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 
