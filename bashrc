@@ -168,8 +168,7 @@ fi
 # export PIP_RESPECT_VIRTUALENV=true
 
 ## rvm setting for ruby
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+source /home/khmirage/.rvm/scripts/rvm
 
 ## node library path setting for mhash
 export NODE_PATH=/usr/lib/node_modules
