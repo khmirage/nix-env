@@ -168,7 +168,8 @@ fi
 # export PIP_RESPECT_VIRTUALENV=true
 
 ## rvm setting for ruby
-[[ -s "/home/andre/.rvm/scripts/rvm" ]] && source "/home/andre/.rvm/scripts/rvm"
+# PATH=$PATH:$HOME/.rvm/bin
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 ## node library path setting for mhash
 export NODE_PATH=/usr/lib/node_modules
