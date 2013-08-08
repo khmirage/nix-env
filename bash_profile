@@ -17,51 +17,53 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# git branch and status for color bash prompt
-if [ -x /usr/bin/tput ] && tput setaf 1 >& /dev/null; then
-    c_git_clean=$(tput setaf 2)
-    c_git_dirty=$(tput setaf 1)
-    c_git_semi_dirty=$(tput setaf 3)
-    c_reset=$(tput sgr0)
-else
-    c_git_clean=
-    c_git_dirty=
-    c_reset=
-    c_git_semi_dirty=
-fi
+c_git_clean=$(tput setaf 2)
+c_git_dirty=$(tput setaf 1)
+c_git_semi_dirty=$(tput setaf 3)
+c_reset=$(tput sgr0)
  
-git_prompt ()
+parse_git_branch() {
+	if git rev-parse --git-dir > /dev/null 2>&1
+	then
+		gitver=$(git branch 2>/dev/null | sed -n '/^\*/s/^\* //p')
+	else
+		return 0
+	fi
+	echo -e "[$gitver]"
+}
+
+git_prompt_color ()
 {
-    if ! git rev-parse --git-dir > /dev/null 2>&1; then
-        return 0
-    fi
- 
-    git_branch=$(git branch 2> /dev/null | sed -n '/^\*/s/^\* //p')
-    if git diff HEAD --quiet 2> /dev/null >&2; then
-        git_color="${c_git_clean}"
-        dirty=0
-    else
-        git_color="${c_git_dirty}"
-        dirty=1
-    fi
- 
-    if git diff $git_branch origin/$git_branch --quiet 2> /dev/null >&2; then
-        git_color="$git_color"
-    else
-        if [ dirty=0 ]; then
-            git_color="${c_git_semi_dirty}"
-        fi
-    fi
- 
-    echo " ($git_color$git_branch${c_reset})"
- 
+	if ! git rev-parse --git-dir > /dev/null 2>&1; then
+		return 0
+	fi
+
+	git_branch=$(git branch 2> /dev/null | sed -n '/^\*/s/^\* //p')
+	if git diff HEAD --quiet 2> /dev/null >&2; then
+		git_color="${c_git_clean}"
+		dirty=0
+	else
+		git_color="${c_git_dirty}"
+		dirty=1
+	fi
+
+	if git diff $git_branch origin/$git_branch --quiet 2> /dev/null >&2; then
+		git_color="$git_color"
+	else
+		if [ dirty=0 ]; then
+			git_color="${c_git_semi_dirty}"
+		fi
+	fi
+
+	echo -ne $git_color
 }
 
 export ARCHFLAGS="-arch x86_64"
 export PATH="/usr/local/bin:/usr/local/sbin:$HOME/Bin:$HOME/.rvm/bin:$PATH"
-export PS1='\[\033[01;32m\]\u@\h\[\033[0m\]$(git_prompt) : \[\033[1;34m\]\w\[\033[0m\] \$ '
+export PS1='\[\033[01;32m\]\u@\h\[\033[0m\] \[$(git_prompt_color)\]$(parse_git_branch)\[${c_reset}\] : \[\033[1;34m\]\w\[\033[0m\] \$ '
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # python virtualenvwarpper setting
 export WORKON_HOME="$HOME/.virtualenv"
