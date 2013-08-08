@@ -1,0 +1,24 @@
+[user]
+	name = Hyeonseung.Lee
+	email = khmirage@gmail.com
+[core]
+	editor = vim
+	excludesfile = /Users/khmirage/.gitignore_global
+[merge]
+	tool = diffmerge
+[color]
+	ui = auto
+[alias]
+	st = status -sb
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	ready = rebase -i @{u}
+	lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	lgfor = "!sh -c 'git log --pretty=format:\"%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --author=\"$1\"' -"
+	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+	standup = "!sh -c 'git log --pretty=\"format:%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset\" --since=yesterday --author=\"$1\"' ="
+	purr = pull --rebase
+[push]
+	default = matching
