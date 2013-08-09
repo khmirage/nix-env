@@ -2,8 +2,13 @@ export TERM=xterm-color
 export CLICOLOR=true
 # export LSCOLORS=ExFxCxDxBxegedabagacad
 
-alias ls='gls --group-directories-first --color=auto'
-# alias ls='ls -FGw'
+if [ -f '/usr/local/bin/gls' ]; then
+	alias ls='gls --group-directories-first --color=auto'
+else
+	# alias ls='ls -FGw'
+	alias ls='ls --color=auto'
+fi
+
 alias ll='ls -lv'
 alias lh='ls -lh'
 alias la='ls -a'
@@ -17,11 +22,13 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# git branch color previous setting
 c_git_clean=$(tput setaf 2)
 c_git_dirty=$(tput setaf 1)
 c_git_semi_dirty=$(tput setaf 3)
 c_reset=$(tput sgr0)
  
+# parse current git branch name
 parse_git_branch() {
 	if git rev-parse --git-dir > /dev/null 2>&1
 	then
@@ -32,6 +39,7 @@ parse_git_branch() {
 	echo -e "[$gitver]"
 }
 
+# get current branch status color
 git_prompt_color ()
 {
 	if ! git rev-parse --git-dir > /dev/null 2>&1; then
@@ -79,3 +87,4 @@ else
 fi
 
 export NODE_PATH=/usr/local/lib/node_modules
+
