@@ -1,0 +1,231 @@
+"============================================================================= "
+" Vim General Setting
+"============================================================================= "
+" Vim Status Bar Setting
+set laststatus=2
+set statusline=%<%F%h%m%r%h%w%y\ %{strftime(\"%Y/%m/%d-%H:%M\")}%=\ ascii:%b\ col:%c%V\ pos:%o\ lin:%l\,%L\ %P
+
+" remove original vi mode
+set nocp
+
+" command history
+set hi=1000
+
+" used backspace key
+set bs=indent,eol,start
+
+" always display cursor position
+set ru
+
+" When some operate, auto move line first column
+set sol
+
+" use matching bracket
+set mps+=<:>
+
+" highlighting search word
+set hls
+
+" use smart case sensitive
+set scs
+
+" Tab Setting
+set ts=4    "tabstop
+set sts=4   "softtabstop
+set sw=4    "shiftwidth
+
+" enabled syntax highlighting for file type
+syntax on
+
+set smartindent
+set ai	    "autoindent
+set cindent
+
+" When paste, ignore indent
+set pastetoggle=<Ins>
+
+" vim color scheme settings
+" colorscheme kolor
+colorscheme desert
+
+" Folding Setting
+set fdl=1
+set fdc=1
+set showmatch
+highlight Folded ctermfg=216
+
+" Match brace color setting
+highlight MatchParen cterm=bold ctermbg=blue ctermfg=yellow
+
+
+"============================================================================= "
+" Vim GUI Setting
+"============================================================================= "
+" vim GUI Setting
+if has("gui_running")
+    " Disable Toolbar
+    set go-=T
+    " Disable Scrollbar
+    set go-=l
+    set go-=L
+    set go-=r
+    set go-=R
+    set go-=b
+    " mouse opt setting
+    set mousem=popup
+
+	"Font Setting
+	if has("win32") || has("win64")
+		set guifont=나눔고딕코딩:h11:cHANGEUL
+	elseif has("gui_gtk")
+		set guifont=나눔고딕코딩\ 11
+	elseif has("gui_macvim")
+		set guifont=Monaco:h14
+	endif
+
+	" vim GUI resolution setting
+    set lines=40
+    set co=110
+	" vim GUI Colorscheme setting
+	" solarized setting
+	set background=dark
+	colorscheme seoul256
+	" favorite colorscheme 
+	" solarized		- (2011-05-05)
+	" kolor			- 1.4.0 (2013-03-13)
+	" motus			- 0.1 (2005-11-03)
+	" molokai		- (2013-02-16)
+	" seoul256		- (2013-08-09)
+endif
+
+
+"============================================================================= "
+" By extention, each of preference
+"============================================================================= "
+filetype on
+filetype plugin indent on
+
+au FileType c,cpp,java,pythonset nu ts=4 sts=4 sw=4
+au FileType ruby,perl,javascript,json,css,sh,html,htmldjango,scala set nu ts=2 sts=2 sw=2
+
+" Python
+au FileType python set expandtab
+au FileType python map <F2> :!python %
+
+" Ruby
+compiler ruby
+au FileType ruby set tabstop=2
+au FileType ruby set shiftwidth=2
+au FileType ruby set softtabstop=2
+au FileType ruby map <F2> : !ruby %
+
+" Node.js
+" au FileType javascript set textwidth=80
+au FileType javascript set expandtab
+au FileType javascript map <F2> :!node %
+
+" Shell
+au FileType sh map <F2> : !sh %
+
+" Perl
+au FileType perl map <F2> : !perl -w %
+
+" C
+au FileType c map <F2>: !gcc -W -Wall -o %< %
+au FileType c map <F3>: !./%<
+
+" Cpp
+au FileType cpp map <F2>: !g++ -W -Wall -o %< %
+au FileType cpp map <F3>: !./%<
+
+" Java
+au FileType java map <F2>: !javac %
+au FileType java map <F3>: !java %<
+
+" Scala
+au FileType scala map <F2>: !scalac %
+au FileType scala map <F3>: !scala %<
+
+
+"============================================================================= "
+" Vim Key mapping Setting
+"============================================================================= "
+"Whitespace Line Insert Mapping
+map .j o
+map .k O
+map .ti i	w
+
+" windows switching mapping
+map <C-h> <C-w><Left>
+map <C-l> <C-w><Right>
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+
+" leader key remapping
+let mapleader="."
+ 
+" NERDTree Setting
+map <F7> : NERDTreeToggle<CR>
+
+" Tagbar Setting
+map <F8> : TagbarToggle<CR>
+
+
+"============================================================================= "
+" ctage & cscope setting
+"============================================================================= "
+" set tags+=~/.vim/tags/genju.tag
+" silent cs add ~/.vim/tags/cscope.out
+
+
+"============================================================================= "
+" Bundle Setting
+"============================================================================= "
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"" Language Bundles
+Bundle 'ZenCoding.vim'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'custom-cocoa.vim'
+Bundle 'django.vim'
+
+"" System Bundles
+Bundle 'Tagbar'
+Bundle 'pathogen.vim'
+Bundle 'The-NERD-tree'
+Bundle 'Command-T'
+Bundle 'ctrlp.vim'
+
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+" non github repos
+" Bundle 'git://git.wincent.com/command-t.git'
+" ...
+
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+" ===============================================================
+
