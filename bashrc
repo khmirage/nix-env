@@ -53,54 +53,56 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# git branch color previous setting
+c_git_clean=$(tput setaf 2)
+c_git_dirty=$(tput setaf 1)
+c_git_semi_dirty=$(tput setaf 3)
+c_reset=$(tput sgr0)
+ 
+# parse current git branch name
+parse_git_branch() {
+	if git rev-parse --git-dir > /dev/null 2>&1
+	then
+		gitver=$(git branch 2>/dev/null | sed -n '/^\*/s/^\* //p')
+	else
+		return 0
+	fi
+	echo -e "[$gitver]"
+}
+
+# get current branch status color
+git_prompt_color ()
+{
+	if ! git rev-parse --git-dir > /dev/null 2>&1; then
+		return 0
+	fi
+
+	git_branch=$(git branch 2> /dev/null | sed -n '/^\*/s/^\* //p')
+	if git diff HEAD --quiet 2> /dev/null >&2; then
+		git_color="${c_git_clean}"
+		dirty=0
+	else
+		git_color="${c_git_dirty}"
+		dirty=1
+	fi
+
+	if git diff $git_branch origin/$git_branch --quiet 2> /dev/null >&2; then
+		git_color="$git_color"
+	else
+		if [ dirty=0 ]; then
+			git_color="${c_git_semi_dirty}"
+		fi
+	fi
+
+	echo -ne $git_color
+}
 
 PS_IP=`/sbin/ifconfig eth0|grep Bcast|awk '{print $2}'|awk -F':' '{print $2}'`
 
-if [ -x /usr/bin/tput ] && tput setaf 1 >& /dev/null; then
-    c_git_clean=$(tput setaf 2)
-    c_git_dirty=$(tput setaf 1)
-    c_git_semi_dirty=$(tput setaf 3)
-    c_reset=$(tput sgr0)
-else
-    c_git_clean=
-    c_git_dirty=
-    c_reset=
-    c_git_semi_dirty=
-fi
- 
-git_prompt ()
-{
-    if ! git rev-parse --git-dir > /dev/null 2>&1; then
-        return 0
-    fi
- 
-    git_branch=$(git branch 2> /dev/null | sed -n '/^\*/s/^\* //p')
-    if git diff HEAD --quiet 2> /dev/null >&2; then
-        git_color="${c_git_clean}"
-        dirty=0
-    else
-        git_color="${c_git_dirty}"
-        dirty=1
-    fi
- 
-    if git diff $git_branch origin/$git_branch --quiet 2> /dev/null >&2; then
-        git_color="$git_color"
-    else
-        if [ dirty=0 ]; then
-            git_color="${c_git_semi_dirty}"
-        fi
-    fi
- 
-    echo " ($git_color$git_branch${c_reset})"
- 
-}
-
 if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] [$PS_IP]\[\033[0m\]$(git_prompt) : \[\033[01;34m\]\w\[\033[00m\]\$ '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] [$PS_IP]\[$(git_prompt_color)\]$(parse_git_branch)\[${c_reset}\] : \[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] [$PS_IP]\[\033[0m\]$(git_prompt) : \[\033[01;34m\]\w\[\033[00m\]\$ '
-    # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] [$PS_IP]\[$(git_prompt_color)\]$(parse_git_branch)\[${c_reset}\] : \[\033[01;34m\]\w\[\033[00m\]\$ '
 fi
 unset color_prompt force_color_prompt
 
