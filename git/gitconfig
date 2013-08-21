@@ -3,6 +3,7 @@
 	email = khmirage@gmail.com
 [core]
 	editor = vim
+	quotepath = false
 [merge]
 	tool = diffmerge
 [color]
