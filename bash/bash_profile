@@ -91,5 +91,9 @@ else
 	echo "WARNNING : virtualenvwarpper.sh missing"
 fi
 
+# Node library directory path
 export NODE_PATH=/usr/local/lib/node_modules
+
+# JAVA_HOME setting for scala
+# export /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
 
