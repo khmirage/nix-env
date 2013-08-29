@@ -91,5 +91,14 @@ else
 	echo "WARNNING : virtualenvwarpper.sh missing"
 fi
 
+# Node library directory path
 export NODE_PATH=/usr/local/lib/node_modules
+
+# JAVA_HOME setting for scala
+# export /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+
+# Bash Completion Setting
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	. $(brew --prefix)/etc/bash_completion
+fi
 
