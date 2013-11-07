@@ -105,7 +105,7 @@ endif
 filetype on
 filetype plugin indent on
 
-au FileType c,cpp,java,pythonset nu ts=4 sts=4 sw=4
+au FileType c,cpp,java,python set nu ts=4 sts=4 sw=4
 au FileType ruby,perl,javascript,json,css,sh,html,htmldjango,scala set nu ts=2 sts=2 sw=2
 
 " Python
