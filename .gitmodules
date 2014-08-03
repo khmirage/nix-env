@@ -62,3 +62,6 @@
 	path = vim/vim/bundle/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git
 	ignore = dirty
+[submodule "vim/vim/bundle/vim-golang"]
+	path = vim/vim/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git
