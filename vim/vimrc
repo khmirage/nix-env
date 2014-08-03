@@ -131,20 +131,24 @@ au FileType sh map <F2> : !sh %
 au FileType perl map <F2> : !perl -w %
 
 " C
-au FileType c map <F2>: !gcc -W -Wall -o %< %
-au FileType c map <F3>: !./%<
+au FileType c map <F2> : !gcc -W -Wall -o %< %
+au FileType c map <F3> : !./%<
 
 " Cpp
-au FileType cpp map <F2>: !g++ -W -Wall -o %< %
-au FileType cpp map <F3>: !./%<
+au FileType cpp map <F2> : !g++ -W -Wall -o %< %
+au FileType cpp map <F3> : !./%<
 
 " Java
-au FileType java map <F2>: !javac %
-au FileType java map <F3>: !java %<
+au FileType java map <F2> : !javac %
+au FileType java map <F3> : !java %<
 
 " Scala
-au FileType scala map <F2>: !scalac %
-au FileType scala map <F3>: !scala %<
+au FileType scala map <F2> : !scalac %
+au FileType scala map <F3> : !scala %<
+
+" golang
+au FileType go set nu ts=8 sts=8 sw=8
+au FileType go map <F2> : !go run %
 
 
 "============================================================================= "
@@ -195,6 +199,7 @@ Bundle 'gmarik/vundle'
 "" Language Bundles
 Bundle 'ZenCoding.vim'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'jnwhiteh/vim-golang'
 Bundle 'custom-cocoa.vim'
 Bundle 'django.vim'
 

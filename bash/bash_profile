@@ -97,9 +97,10 @@ else
 	echo "WARNNING : virtualenvwarpper.sh missing"
 fi
 
-# Node library directory path
-export NODE_PATH=/usr/local/lib/node_modules
+# GVM Setting
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-# JAVA_HOME setting for scala
-# export /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+# NVM Setting
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 

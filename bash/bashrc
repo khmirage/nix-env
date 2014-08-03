@@ -164,8 +164,10 @@ if [ -d $HOME/bin ]; then
 fi
 
 ## python virtual env settings
-# export WORKON_HOME=$HOME/.pywork
-# source /usr/local/bin/virtualenvwrapper.sh
+## source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=$HOME/.virtualenv
+# export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python2.7"
+# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 # export PIP_VIRTUALENV_BASE=$WORKON_HOME
 # export PIP_RESPECT_VIRTUALENV=true
 
@@ -173,6 +175,10 @@ fi
 # PATH=$PATH:$HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-## node library path setting for mhash
-export NODE_PATH=/usr/lib/node_modules
+# GVM Setting
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# NVM Setting
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
