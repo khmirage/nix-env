@@ -18,6 +18,11 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+if [ -f '/usr/local/bin/nvim' ]; then
+	alias vim='nvim'
+	alias vi='nvim'
+fi
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
