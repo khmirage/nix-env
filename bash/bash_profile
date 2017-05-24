@@ -3,13 +3,13 @@ export CLICOLOR=true
 # export LSCOLORS=ExFxCxDxBxegedabagacad
 
 if [ -f '/usr/local/bin/gls' ]; then
-	alias ls='gls --group-directories-first --color=auto'
+	alias ls='gls -v --group-directories-first --color=auto'
 else
 	# alias ls='ls -FGw'
 	alias ls='ls --color=auto'
 fi
 
-alias ll='ls -lv'
+alias ll='ls -l'
 alias lh='ls -lh'
 alias la='ls -a'
 alias lt='ls -ltr'
@@ -66,14 +66,7 @@ git_prompt_color ()
 	echo -ne $git_color
 }
 
-export ARCHFLAGS="-arch x86_64"
 export PATH="/usr/local/bin:/usr/local/sbin:$HOME/Bin:$PATH"
-# export PATH="/usr/local/bin:/usr/local/sbin:$HOME/Bin:$PATH"
-
-# export GOVERSION="1.1.2"
-# export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION
-export GOPATH=$HOME/.go
-
 export PS1='\[\033[01;32m\]\u@\h\[\033[0m\] \[$(git_prompt_color)\]$(parse_git_branch)\[${c_reset}\] : \[\033[1;34m\]\w\[\033[0m\] \$ '
 
 # Bash Completion ($ brew install bash-completion)
@@ -86,7 +79,6 @@ fi
 
 # python virtualenvwarpper setting
 export WORKON_HOME="$HOME/.virtualenv"
-export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python2.7"
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export PIP_VIRTUALENV_BASE="$WORKON_HOME"
 export PIP_RESPECT_VIRTUALENV=true
@@ -103,4 +95,7 @@ fi
 # NVM Setting
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Iterm2 Shell Intergration
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
