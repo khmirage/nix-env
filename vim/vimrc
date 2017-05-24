@@ -1,8 +1,8 @@
 "============================================================================= "
 "Plugin Setting
 "============================================================================= "
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
@@ -136,8 +136,9 @@ set tabstop=4 shiftwidth=4 sts=4
 syntax on
 
 set smartindent
-set ai	    "autoindent
+set ai
 set cindent
+set nu
 
 "When paste, ignore indent
 set pastetoggle=<Ins>
