@@ -19,8 +19,9 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 if [ -f '/usr/local/bin/nvim' ]; then
-	alias vim='nvim'
 	alias vi='nvim'
+	alias vim='nvim'
+	alias view='nvim -R'
 fi
 
 alias grep='grep --color=auto'
