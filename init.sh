@@ -4,7 +4,7 @@
 # Install Vundle.vim
 #-------------------------------------------------------------------# 
 echo "[Install Vundle.vim submodule]"
-exec git submodule update --init --recursive
+git submodule update --init --recursive
 #-------------------------------------------------------------------# 
 
 #-------------------------------------------------------------------# 
@@ -51,4 +51,10 @@ if [ -f "${HOME}/.config/nvim/init.vim" ];then
 fi
 ln -s ${CURRENT_DIR}/vim/vimrc ${HOME}/.config/nvim/init.vim
 #-------------------------------------------------------------------# 
+
+#-------------------------------------------------------------------# 
+# Install vim plugins
+#-------------------------------------------------------------------# 
+echo "[Install vim plugins]"
+vim +PluginInstall +qall
 
