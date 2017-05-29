@@ -196,11 +196,13 @@ augroup CommandLanguaes
 	au FileType cpp			map <F2> :!g++ -W -Wall -o %< %
 	au FileType c,cpp		map <F3> :!./%<
 
-	au FileType java		map <F2> :!javac %
-	au FileType java		map <F3> :!java %<
+	au FileType go			map <F2> :!go run %
 
 	au FileType swift		map <F2> :!swiftc %
 	au FileType swift		map <F3> :!./%<
+
+	au FileType java		map <F2> :!javac %
+	au FileType java		map <F3> :!java %<
 
 	au FileType kotlin		map <F2> :!kotlinc % -include-runtime -d %<.jar
 	au FileType kotlin		map <F3> :!java -jar %<.jar
