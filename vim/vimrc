@@ -188,49 +188,34 @@ map <F8> : TagbarToggle<CR>
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+" Vundle System Plugin
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" My Bundles here:
-"" Language Bundles
-Bundle 'ZenCoding.vim'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'custom-cocoa.vim'
-Bundle 'django.vim'
+Plugin 'Tagbar'
+Plugin 'pathogen.vim'
+Plugin 'The-NERD-tree'
+Plugin 'ctrlp.vim'
+Plugin 'FuzzyFinder'
 
-"" System Bundles
-Bundle 'Tagbar'
-Bundle 'pathogen.vim'
-Bundle 'The-NERD-tree'
-Bundle 'Command-T'
-Bundle 'ctrlp.vim'
+" 당신의 모든 플러그인은 다음 명령어 이전에 추가되어야 합니다
+call vundle#end()            " 필수
+filetype plugin indent on    " 필수
 
-" original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-" non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
-" ...
-
-filetype plugin indent on     " required!
+" 플러그인의 들여쓰기 변화를 무시하려면, 대신 이 명령어를 사용하십시오:
+"filetype plugin on
 "
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" 간단한 도움말
+" :PluginList       - 설정된 플러그인의 리스트
+" :PluginInstall    - 플러그인 설치; 업데이트를 하려면 `!`를 덧붙이거나 :PluginUpdate 명령을 사용하십시오
+" :PluginSearch foo - foo에 대해 검색; `!`를 덧붙여 로컬 캐시를 새로고침하십시오
+" :PluginClean      - 사용하지 않는 플러그인의 삭제를 확인; `!`를 붙여 자동 삭제를 승인하십시오
 "
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-" ===============================================================
+" 더 자세한 내용은 :h vundle 문서나 wiki의 FAQ를 확인하십시오
 
