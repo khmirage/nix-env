@@ -204,6 +204,9 @@ Plugin 'The-NERD-tree'
 Plugin 'ctrlp.vim'
 Plugin 'FuzzyFinder'
 
+" Vundle language plugins
+Plugin 'posva/vim-vue'
+
 " 당신의 모든 플러그인은 다음 명령어 이전에 추가되어야 합니다
 call vundle#end()            " 필수
 filetype plugin indent on    " 필수

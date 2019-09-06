@@ -68,6 +68,8 @@ git_prompt_color ()
 
 export ARCHFLAGS="-arch x86_64"
 export PATH="/usr/local/bin:/usr/local/sbin:$HOME/Bin:$PATH"
+# Set homebrew python3
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # export PATH="/usr/local/bin:/usr/local/sbin:$HOME/Bin:$PATH"
 
 # export GOVERSION="1.1.2"
@@ -85,20 +87,20 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # python virtualenvwarpper setting
-export WORKON_HOME="$HOME/.virtualenv"
-export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-export PIP_VIRTUALENV_BASE="$WORKON_HOME"
-export PIP_RESPECT_VIRTUALENV=true
+# export WORKON_HOME="$HOME/.virtualenv"
+# export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
+# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+# export PIP_VIRTUALENV_BASE="$WORKON_HOME"
+# export PIP_RESPECT_VIRTUALENV=true
 
-if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-	source /usr/local/bin/virtualenvwrapper.sh
-else
-	echo "WARNNING : virtualenvwarpper.sh missing"
-fi
+# if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+# 	source /usr/local/bin/virtualenvwrapper.sh
+# else
+# 	echo "WARNNING : virtualenvwarpper.sh missing"
+# fi
 
 # GVM Setting
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+# [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # NVM Setting
 export NVM_DIR="$HOME/.nvm"
@@ -106,4 +108,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# Docker env
+eval $(docker-machine env default)
 
