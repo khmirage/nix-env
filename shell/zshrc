@@ -72,6 +72,8 @@ ZSH_THEME="agnoster"
 plugins=(
 	git
 	nvm
+	docker
+	docker-compose
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
@@ -131,6 +133,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias git='LC_MESSAGES=en_US.UTF-8 git'
+
 # Set default python version - homebrew's python3
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
@@ -138,6 +142,9 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Docker env
+eval $(docker-machine env default)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
