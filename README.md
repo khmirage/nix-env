@@ -25,6 +25,14 @@
 		vimrc -> ~/.vimrc
 ```
 
+#### [NeoVim]
+```
+	init.vim - vim 설정파일과 같이 사용하도록 설정
+	$ cp -R nvim ~/.config
+	or
+	$ ln -sf nvim ~/.config/
+```
+
 #### [Git]
 ```
 	git global config
