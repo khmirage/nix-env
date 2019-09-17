@@ -136,7 +136,9 @@ alias egrep='egrep --color=auto'
 alias git='LC_MESSAGES=en_US.UTF-8 git'
 
 # Set default python version - homebrew's python3
-export PATH=/usr/local/opt/python/libexec/bin:$PATH
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 # NVM Setting
 export NVM_DIR="$HOME/.nvm"
