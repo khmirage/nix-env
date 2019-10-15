@@ -1,3 +1,9 @@
 [submodule "vim/vim/bundle/Vundle.vim"]
 	path = vim/vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "shell/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = shell/oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "shell/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = shell/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
