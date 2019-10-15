@@ -45,8 +45,8 @@ set cindent
 set pastetoggle=<Ins>
 
 " vim color scheme settings
-" colorscheme kolor
-colorscheme desert
+ colorscheme kolor
+" colorscheme desert
 
 " Folding Setting
 set fdl=1
@@ -56,7 +56,6 @@ highlight Folded ctermfg=216
 
 " Match brace color setting
 highlight MatchParen cterm=bold ctermbg=blue ctermfg=yellow
-
 
 "============================================================================= "
 " Vim GUI Setting
@@ -208,9 +207,6 @@ Plugin 'pathogen.vim'
 Plugin 'The-NERD-tree'
 Plugin 'ctrlp.vim'
 Plugin 'FuzzyFinder'
-
-" Vundle language plugins
-Plugin 'posva/vim-vue'
 
 " Vundle language plugins
 Plugin 'posva/vim-vue'
