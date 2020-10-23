@@ -21,5 +21,9 @@
 	standup = "!sh -c 'git log --pretty=\"format:%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset\" --since=yesterday --author=\"$1\"' ="
 	purr = pull --rebase
 	dt = describe --tags
+	cc = ! git rev-list HEAD | nl | grep
 [push]
 	default = matching
+[pull]
+	ff = only	
+	
